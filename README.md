@@ -59,7 +59,7 @@ Although the different models that we trialed can all predict the final sentimen
 
 *   Timothy Chang Kai En - Initial data visualisation, Data cleaning, Multinomial Naive Byers Model, Linear Support Vector Classification Model, Script formulation, Sentiment Detector GUI
 *   Toh Si En Ernneth - Word cloud, README, Script formulation, Video Slides, Video Presentation
-*   Tuan Nguyen - Stemming process, Logistic Regression, Decision Tree, Sentiment Detector Backend.
+*   Tuan Nguyen - Stemming process, Logistic Regression, Decision Tree, Script formulation, Sentiment Detector Backend.
 
 ---
 
