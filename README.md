@@ -67,7 +67,7 @@ Although the different models that we trialed can all predict the final sentimen
 
 *   [Kaggle](https://www.kaggle.com/datasets) (dataset)
 *   [statistics.com](https://www.statistics.com/) (definitions)
-*   [MonkeyLearn Blog](https://monkeylearn.com/blog/what-is-tf-idf/#:~:text=TF%2DIDF%20(term%20frequency%2D,across%20a%20set%20of%20documents) (understanding TFIDF)
+*   [MonkeyLearn Blog](https://tinyurl.com/598bynkc) (understanding TFIDF)
 *   [StatQuest with Josh Starmer](https://www.youtube.com/@statquest) via YouTube (understanding ML models)
 *   [Deep learning on Movie Reviews Dataset (IMDB Dataset - 50k reviews) | Deep Learning Project 2](https://youtu.be/ybzeyAfWh7U) via YouTube
 *   [Movies Reviews Sentiment Analysis in NLP  | Natural Language Processing #NLP](https://youtu.be/xRuy7yi2Sp8) via YouTube
