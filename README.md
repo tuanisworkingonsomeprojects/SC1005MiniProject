@@ -57,9 +57,9 @@ Although the different models that we trialed can all predict the final sentimen
 
 ## Contributors
 
-*   Timothy Chang Kai En - Initial data visualisation, Data cleaning, Multinomial Naive Byers Model, Linear Support Vector Classification Model, Script formulation, Sentiment Detector GUI
-*   Toh Si En Ernneth - Data cleaning, Word cloud, README, Script formulation, Video Slides, Video Presentation
-*   Tuan Nguyen - Stemming process, Logistic Regression, Decision Tree, Script formulation, Sentiment Detector (Back-end)
+*   [Timothy Chang Kai En](https://github.com/legithubble) - Initial data visualisation, Data cleaning, Multinomial Naive Byers Model, Linear Support Vector Classification Model, Script formulation, Sentiment Detector GUI
+*   [Toh Si En Ernneth](https://github.com/potatohburritoh/) - Data cleaning, Word cloud, README, Script formulation, Video Slides, Video Presentation
+*   [Tuan Nguyen](https://github.com/tuanisworkingonsomeprojects) - Stemming process, Logistic Regression, Decision Tree, Script formulation, Sentiment Detector (Back-end)
 
 ---
 
