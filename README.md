@@ -46,7 +46,16 @@ The models were then evaluated using a [Confusion Matrix](https://towardsdatasci
 
 ## Conclusion
 1. We can successfully predict the general sentiment of a movie review.
-2. We initially thought that the Logistic Regression Model is the most suitable to predict the sentiment of a movie review, but later realised that the Linear Support Classification Model is the most suitable.
+2. We initially thought that the Logistic Regression Model is the most suitable to predict the sentiment of a movie review, but later realised that the Linear Support Vector Classification Model is the most suitable.
+
+---
+## What have we learnt from the project?
+1. Text data cleaning and stemming.
+2. TFIDF Vectorization.
+3. Logistic Regression model, SVC model, Multinomial Naive Bayes Model.
+4. Exporting model to .joblib file for future use.
+5. Flask library for GUI.
+6. Python and OSSystem communication.
 
 ---
 
