@@ -55,7 +55,7 @@ The models were then evaluated using a [Confusion Matrix](https://towardsdatasci
 3. Logistic Regression model, SVC model, Multinomial Naive Bayes Model.
 4. Exporting model to .joblib file for future use.
 5. Flask library for GUI.
-6. Python and OSSystem communication.
+6. Python and OS communication.
 
 ---
 
