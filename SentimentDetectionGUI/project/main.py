@@ -20,6 +20,8 @@ subprocess.check_call([sys.executable, "-m", "pip", "install", 'selenium'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'werkzeug'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'pywin32'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'plyer'])
+subprocess.check_call([sys.executable, "-m", "pip", "install", 'nltk'])
+subprocess.check_call([sys.executable, "-m", "pip", "install", 'regex'])
 
 from flask import Flask, render_template, request
 import pandas as pd
@@ -33,6 +35,20 @@ import win32com.client
 import pythoncom
 from plyer import notification
 
+import nltk
+nltk.download('stopwords') 
+nltk.download('punkt') 
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('porter_test')
+from nltk.tokenize import word_tokenize 
+from nltk.stem import PorterStemmer
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+stop_words = set(stopwords.words("english"))
+
+import re
 
 Folder = os.getcwd()
 
@@ -54,6 +70,27 @@ def check_pos_neg(sentiment):
   else:
     return "This is a positive review."
 
+
+def cleaning(text):
+    text = text.lower() # change to lowercase
+    text = re.sub('<br />', '', text)
+    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r"https\S+|www\S+|http\S+", '', text, flags = re.MULTILINE)
+    text = re.sub(r'\@w+|\#', '', text)
+    text_tokens = word_tokenize(text)
+    filtered_tokens = []
+    for w in text_tokens:
+      if not w in stop_words or w == 'not':
+        filtered_tokens.append(w)
+    return " ".join(filtered_tokens)
+
+def stem(text):
+  stemmer = PorterStemmer()
+  tokens = word_tokenize(text)
+  words = [stemmer.stem(word) for word in tokens]
+  data = " ".join(words)
+  return data
+
 @app.route('/')
 
 def index():
@@ -66,6 +103,17 @@ def ans():
         print(request.form)
         ls = list(request.form.lists())
         value = ls[0][1]
+        review = value[0]
+
+        print(value)
+        print(review)
+
+        review = stem(cleaning(review))
+        
+
+        print(review)
+        value = [review]
+
         result = loaded_model.predict(vect.transform(value))
         message = check_pos_neg(result)
         notification.notify(title = "RESULT", message = message, timeout = 10)
@@ -92,7 +140,7 @@ if __name__ == '__main__':
     app.run(
         host = '127.0.0.1',
         port = 5001,
-        debug= False
+        debug= True
     )
 
 
