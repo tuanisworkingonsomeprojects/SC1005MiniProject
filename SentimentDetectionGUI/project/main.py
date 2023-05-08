@@ -18,7 +18,14 @@ subprocess.check_call([sys.executable, "-m", "pip", "install", 'pandas'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'Flask'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'selenium'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'werkzeug'])
-subprocess.check_call([sys.executable, "-m", "pip", "install", 'pywin32'])
+
+try:
+  # Download Window requirement Lib
+  subprocess.check_call([sys.executable, "-m", "pip", "install", 'pywin32'])
+except:
+  # Download Mac requirement Lib
+  subprocess.check_call([sys.executable, "-m", "pip", "install", 'macos-notifications'])
+
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'plyer'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'nltk'])
 subprocess.check_call([sys.executable, "-m", "pip", "install", 'regex'])
@@ -30,10 +37,23 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn import *
 import numpy as np
 import webbrowser
-import win32api
-import win32com.client
+
+
+try:
+  # Import Window requirement Lib
+  import win32api
+  import win32com.client
+except:
+  # Import Mac requirement Lib
+  from functools import partial
+  from mac_notifications import client
+
 import pythoncom
 from plyer import notification
+
+
+
+
 
 import nltk
 nltk.download('stopwords') 
@@ -116,12 +136,36 @@ def ans():
 
         result = loaded_model.predict(vect.transform(value))
         message = check_pos_neg(result)
-        notification.notify(title = "RESULT", message = message, timeout = 10)
-        result = win32api.MessageBox(None, message, "Result", 1)
-        if result == 1:
-            print('Ok')
-        elif result == 2:
-            print('cancel')
+
+        try:
+          # Notify Win
+          notification.notify(title = "RESULT", message = message, timeout = 10)
+
+        except:
+          # Notify Mac
+          client.create_notification(
+            title="Result",
+            subtitle= message,
+            action_button_str="OK"
+          )
+
+
+
+        try:
+          # Win message box
+          result = win32api.MessageBox(None, message, "Result", 1)
+          if result == 1:
+              print('Ok')
+          elif result == 2:
+              print('cancel')
+        except:
+          # Mac message box
+          os.system("""osascript -e 'Tell application "System Events" to display dialog """+ message +""" with title "Result"'""")
+
+
+
+          
+          
         print("result", message)
         return ('', 204)
     
